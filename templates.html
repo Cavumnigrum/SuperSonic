@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Job Search</title>
+</head>
+<body>
+    <h1>Job Search</h1>
+    <form id="search-form">
+        <label for="name">Profession Name:</label>
+        <input type="text" id="name" name="name"><br>
+        <label for="salary">Salary:</label>
+        <input type="text" id="salary" name="salary"><br>
+        <label for="experience">Experience:</label>
+        <input type="text" id="experience" name="experience"><br>
+        <label for="area">Area:</label>
+        <input type="text" id="area" name="area"><br>
+        <button type="submit">Search</button>
+    </form>
+    <div id="results"></div>
+
+    <script>
+        document.getElementById('search-form').onsubmit = async function(e) {
+            e.preventDefault();
+            const formData = new FormData(e.target);
+            const data = Object.fromEntries(formData.entries());
+            const response = await fetch('/search', {
+                method: 'POST',
+                headers: {'Content-Type': 'application/json'},
+                body: JSON.stringify(data)
+            });
+            const results = await response.json();
+            document.getElementById('results').innerHTML = JSON.stringify(results);
+        };
+    </script>
+</body>
+</html>
