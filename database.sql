@@ -1,7 +1,7 @@
 -- init.sql
--- CREATE DATABASE vacancies_db;
+-- CREATE DATABASE db;
 
-\c vacancies_db;
+\c db;
 
 CREATE TABLE IF NOT EXISTS vacancies (
     id SERIAL PRIMARY KEY,
