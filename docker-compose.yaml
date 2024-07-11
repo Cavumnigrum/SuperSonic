@@ -4,7 +4,7 @@ services:
   db:
     image: postgres
     environment:
-      POSTGRES_DB: vacancies_db
+      POSTGRES_DB: db
       POSTGRES_USER: postgres
       POSTGRES_PASSWORD: postgres
     ports:
@@ -18,7 +18,7 @@ services:
     environment:
       DB_HOST: db
       DB_PORT: 5432
-      DB_NAME: vacancies_db
+      DB_NAME: db
       DB_USER: postgres
       DB_PASS: postgres
     depends_on:
